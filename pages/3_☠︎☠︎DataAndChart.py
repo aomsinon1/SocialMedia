@@ -1,21 +1,24 @@
 import streamlit as st
 import pandas as pd
+import altair as alt
 
 st.header("Show Data Index Price")
 
-df=pd.read_csv("./data/dummy_data.csv")
+df = pd.read_csv("./data/dummy_data.csv")
 st.write(df.head(10))
 
 st.header("Show Chart")
 
-import altair as alt
+# Filtered data based on age_range
+age_range = st.slider("Select age range", min_value=df["age"].min(), max_value=df["age"].max(), value=(df["age"].min(), df["age"].max()))
+filtered_df = df[(df["age"] >= age_range[0]) & (df["age"] <= age_range[1])]
 
-# สร้างกราฟแท่ง
+# Create chart
 chart = alt.Chart(filtered_df).mark_bar().encode(
     x=alt.X('age', title='Age'),
-    y=alt.Y('count()', title='Count'),  # ใช้ count() เพื่อนับจำนวนข้อมูลที่มีในแต่ละช่วงอายุ
+    y=alt.Y('count()', title='Count'),  # Using count() to count the number of data points in each age group
     color='platform:N',
-    tooltip=['platform', 'age']  # แก้ไขเป็นชื่อฟิลด์ที่ต้องการแสดงใน tooltip
+    tooltip=['platform', 'age']
 ).properties(
     width=600,
     height=400,
@@ -31,6 +34,7 @@ chart = alt.Chart(filtered_df).mark_bar().encode(
 )
 
 st.altair_chart(chart, use_container_width=True)
+
 
 
 

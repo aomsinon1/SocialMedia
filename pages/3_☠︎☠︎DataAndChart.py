@@ -37,19 +37,11 @@ st.altair_chart(chart, use_container_width=True)
 
 
 
-import streamlit as st
-import pandas as pd
-import altair as alt
-
-# โหลดข้อมูล
-df = pd.read_csv("./data/dummy_data.csv")
-
-# สร้างกราฟแท่ง
 chart = alt.Chart(df).mark_bar().encode(
-    x=alt.X('time_spent', title='Time Spent'),
-    y=alt.Y('count()', title='Count'),  
+    x=alt.X('platform:N', title='Platform'),
+    y=alt.Y('time_spent', title='Time Spent'),  
     color='platform:N',
-    tooltip=['time_spent', 'platform']
+    tooltip=['platform', 'time_spent']
 ).properties(
     width=600,
     height=400,
@@ -58,7 +50,6 @@ chart = alt.Chart(df).mark_bar().encode(
 
 # แสดงกราฟใน Streamlit
 st.altair_chart(chart, use_container_width=True)
-
 
 
 

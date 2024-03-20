@@ -8,8 +8,7 @@ st.write(df.head(10))
 
 st.header("Show Chart")
 
-st.line_chart(
-   df, x="platform", y=["age"], color=["#FF0000"]  )
+
 
 age_range = st.slider("Select age range", min_value=df["age"].min(), max_value=df["age"].max(), value=(df["age"].min(), df["age"].max()))
 filtered_df = df[(df["age"] >= age_range[0]) & (df["age"] <= age_range[1])]

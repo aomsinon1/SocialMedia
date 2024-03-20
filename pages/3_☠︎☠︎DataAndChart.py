@@ -57,6 +57,27 @@ st.altair_chart(pie_chart, use_container_width=True)
 
 
 
+pie_chart = alt.Chart(filtered_df).mark_arc().encode(
+    alt.X('age:N', title='Age'),
+    alt.Y('sum(male):Q', title='Male Count')
+).properties(
+    width=600,
+    height=400,
+    title='Male Distribution by Age'
+).configure_title(
+    fontSize=20,
+    fontWeight='bold',
+    color='gray'
+).configure_axis(
+    labelFontSize=12,
+    titleFontSize=16,
+    titleFontWeight='normal'
+)
+
+st.altair_chart(pie_chart, use_container_width=True)
+
+
+
 
 
 

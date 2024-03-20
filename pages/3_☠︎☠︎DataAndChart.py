@@ -36,31 +36,7 @@ chart = alt.Chart(filtered_df).mark_bar().encode(
 st.altair_chart(chart, use_container_width=True)
 
 
-import altair as alt
-
-# นับจำนวนข้อมูลแยกตาม platform และ time_spent แล้วรวมข้อมูล
-platform_time_count = filtered_df.groupby(['platform', 'time_spent']).size().reset_index(name='count')
-
-# สร้าง Pie Chart
-pie_chart = alt.Chart(platform_time_count).mark_arc().encode(
-    color='platform:N',
-    theta='count:Q',
-    tooltip=['platform', 'time_spent', 'count']
-).properties(
-    width=600,
-    height=400,
-    title='Distribution by Platform and Time Spent'
-).configure_title(
-    fontSize=20,
-    fontWeight='bold',
-    color='gray'
-).configure_axis(
-    labelFontSize=12,
-    titleFontSize=16,
-    titleFontWeight='normal'
-)
-
-st.altair_chart(pie_chart, use_container_width=True)
+max_value = filtered_df.groupby(['male', 'time_spent', 'platform']).size().max()
 
 
 

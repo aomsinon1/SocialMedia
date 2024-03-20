@@ -35,23 +35,25 @@ chart = alt.Chart(filtered_df).mark_bar().encode(
 
 st.altair_chart(chart, use_container_width=True)
 
+
+
+import altair as alt
+
+# นับจำนวนข้อมูลในแต่ละแพลตฟอร์ม
+platform_count = filtered_df['platform'].value_counts().reset_index()
+platform_count.columns = ['platform', 'count']
+
+# สร้าง Pie Chart
 pie_chart = alt.Chart(platform_count).mark_arc().encode(
-    theta='male:Q',
     color='platform:N',
-    tooltip=['platform', 'male']
+    tooltip=['platform', 'count']
 ).properties(
-    width=400,
+    width=600,
     height=400,
     title='Platform Distribution'
-).configure_title(
-    fontSize=20,
-    fontWeight='bold',
-    color='gray'
 )
 
 st.altair_chart(pie_chart, use_container_width=True)
-
-
 
 
 

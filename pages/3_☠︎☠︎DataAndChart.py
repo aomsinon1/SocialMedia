@@ -41,12 +41,12 @@ import altair as alt
 
 # นับจำนวนข้อมูลในแต่ละแพลตฟอร์ม
 platform_count = filtered_df['platform'].value_counts().reset_index()
-platform_count.columns = ['platform', 'count']
+platform_count.columns = ['platform', 'male']
 
 # สร้าง Pie Chart
 pie_chart = alt.Chart(platform_count).mark_arc().encode(
     color='platform:N',
-    tooltip=['platform', 'count']
+    tooltip=['platform', 'male']
 ).properties(
     width=600,
     height=400,

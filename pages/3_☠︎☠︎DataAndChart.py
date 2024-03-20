@@ -25,7 +25,10 @@ max_age = df["age"].max()
 age_range = st.slider("Select age range", min_value=min_age, max_value=max_age)
 
 # แปลงค่าที่ได้จากช่องสไลเดอร์เป็น int
-age_range = (int(age_range[0]), int(age_range[1]))
+if isinstance(age_range[0], (int, float)) and isinstance(age_range[1], (int, float)):
+    age_range = (int(age_range[0]), int(age_range[1]))
+else:
+    age_range = (min_age, max_age)
 
 # กรองข้อมูลตามช่วงอายุที่ผู้ใช้เลือก
 filtered_df = df[(df["age"] >= age_range[0]) & (df["age"] <= age_range[1])]

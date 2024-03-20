@@ -47,11 +47,11 @@ chart = alt.Chart(filtered_df).mark_circle(size=500).encode(
     x=alt.X('platform', title='Platform'),
     y=alt.Y('male', title='Male'),
     color='platform:N',
-    tooltip=['platform', 'age']
+    tooltip=['platform', 'male']
 ).properties(
     width=600,
     height=400,
-    title='Age Distribution by Platform'
+    title='male Distribution by Platform'
 ).configure_title(
     fontSize=20,
     fontWeight='bold',

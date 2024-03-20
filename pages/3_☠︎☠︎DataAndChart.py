@@ -44,14 +44,14 @@ import altair as alt
 
 # สร้างกราฟวงกลม
 chart = alt.Chart(filtered_df).mark_circle(size=500).encode(
-    x=alt.X('platform', title='Platform'),
-    y=alt.Y('male', title='Male'),
+    x=alt.X('age', title='Age'),
+    y=alt.Y('time_spent', title='Time_spent'),
     color='platform:N',
     tooltip=['platform', 'male']
 ).properties(
     width=600,
     height=400,
-    title='male Distribution by Platform'
+    title='age Distribution by Platform'
 ).configure_title(
     fontSize=20,
     fontWeight='bold',

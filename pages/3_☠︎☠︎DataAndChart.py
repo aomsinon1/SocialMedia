@@ -70,8 +70,12 @@ bar_chart = alt.Chart(max_age_by_platform).mark_bar().encode(
 st.altair_chart(bar_chart, use_container_width=True)
 
 
+import altair as alt
+
+# กรุ๊ปและสรุปข้อมูลตามแต่ละแพลตฟอร์มและเวลาเล่นสูงสุดของผู้ชาย
 max_time_spent_by_platform_male = filtered_df[filtered_df['gender'] == 'male'].groupby('platform')['time_spent'].max().reset_index()
 
+# สร้าง Pie Chart
 pie_chart_male = alt.Chart(max_time_spent_by_platform_male).mark_arc().encode(
     color='platform:N',
     tooltip=['platform', 'time_spent']
@@ -85,7 +89,9 @@ pie_chart_male = alt.Chart(max_time_spent_by_platform_male).mark_arc().encode(
     color='gray'
 )
 
+# แสดง Pie Chart ใน Streamlit
 st.altair_chart(pie_chart_male, use_container_width=True)
+
 
 
 

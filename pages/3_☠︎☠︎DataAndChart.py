@@ -36,7 +36,6 @@ chart = alt.Chart(filtered_df).mark_bar().encode(
 st.altair_chart(chart, use_container_width=True)
 
 
-
 import altair as alt
 
 # นับจำนวนข้อมูลในแต่ละช่วงเวลาที่ใช้ในการใช้งานแอป
@@ -46,7 +45,8 @@ time_spent_count.columns = ['time_spent', 'count']
 # สร้าง Pie Chart
 pie_chart = alt.Chart(time_spent_count).mark_arc().encode(
     color='time_spent:N',
-    tooltip=['time_spent', 'count']
+    tooltip=['time_spent', 'count'],
+    angle='count'
 ).properties(
     width=600,
     height=400,
@@ -54,6 +54,7 @@ pie_chart = alt.Chart(time_spent_count).mark_arc().encode(
 )
 
 st.altair_chart(pie_chart, use_container_width=True)
+
 
 
 

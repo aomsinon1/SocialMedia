@@ -38,10 +38,13 @@ st.altair_chart(chart, use_container_width=True)
 
 import altair as alt
 
+# นับจำนวนข้อมูลแยกตาม platform และ time_spent แล้วรวมข้อมูล
+platform_time_count = filtered_df.groupby(['platform', 'time_spent']).size().reset_index(name='count')
+
 # สร้าง Pie Chart
-pie_chart = alt.Chart(filtered_df).mark_arc().encode(
+pie_chart = alt.Chart(platform_time_count).mark_arc().encode(
     alt.Color('platform:N', title='Platform'),
-    alt.Size('count():Q', title='Count')
+    alt.Size('count:Q', title='Count')
 ).properties(
     width=600,
     height=400,
@@ -57,6 +60,7 @@ pie_chart = alt.Chart(filtered_df).mark_arc().encode(
 )
 
 st.altair_chart(pie_chart, use_container_width=True)
+
 
 
 

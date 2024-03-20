@@ -43,8 +43,9 @@ platform_time_count = filtered_df.groupby(['platform', 'time_spent']).size().res
 
 # สร้าง Pie Chart
 pie_chart = alt.Chart(platform_time_count).mark_arc().encode(
-    alt.Color('platform:N', title='Platform'),
-    alt.Size('count:Q', title='Count')
+    color='platform:N',
+    theta='count:Q',
+    tooltip=['platform', 'time_spent', 'count']
 ).properties(
     width=600,
     height=400,
@@ -60,6 +61,7 @@ pie_chart = alt.Chart(platform_time_count).mark_arc().encode(
 )
 
 st.altair_chart(pie_chart, use_container_width=True)
+
 
 
 

@@ -20,17 +20,24 @@ import altair as alt
 
 # สร้างกราฟแท่งโดยกำหนดแกน y เป็นอายุ
 chart = alt.Chart(filtered_df).mark_bar(color='#3182bd').encode(
-    x='platform',
-    y='age',
+    x=alt.X('platform', title='Platform', axis=alt.Axis(labelAngle=-45)),
+    y=alt.Y('age', title='Age'),
     tooltip=['platform', 'age']
 ).properties(
     width=600,
     height=400,
     title='Age Distribution by Platform'
+).configure_title(
+    fontSize=20,
+    fontWeight='bold',
+    color='gray'
+).configure_axis(
+    labelFontSize=12,
+    titleFontSize=16,
+    titleFontWeight='normal'
 )
 
 st.altair_chart(chart, use_container_width=True)
-
 
 
 

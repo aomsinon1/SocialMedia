@@ -36,7 +36,6 @@ chart = alt.Chart(filtered_df).mark_bar().encode(
 st.altair_chart(chart, use_container_width=True)
 
 
-pip install streamlit altair
 
 import streamlit as st
 import pandas as pd

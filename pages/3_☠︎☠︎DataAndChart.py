@@ -70,7 +70,22 @@ bar_chart = alt.Chart(max_age_by_platform).mark_bar().encode(
 st.altair_chart(bar_chart, use_container_width=True)
 
 
+max_time_spent_by_platform_male = filtered_df[filtered_df['gender'] == 'male'].groupby('platform')['time_spent'].max().reset_index()
 
+pie_chart_male = alt.Chart(max_time_spent_by_platform_male).mark_arc().encode(
+    color='platform:N',
+    tooltip=['platform', 'time_spent']
+).properties(
+    width=600,
+    height=400,
+    title='Favorite Platform of Males'
+).configure_title(
+    fontSize=20,
+    fontWeight='bold',
+    color='gray'
+)
+
+st.altair_chart(pie_chart_male, use_container_width=True)
 
 
 

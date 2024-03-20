@@ -36,7 +36,31 @@ chart = alt.Chart(filtered_df).mark_bar().encode(
 st.altair_chart(chart, use_container_width=True)
 
 
-max_value = filtered_df.groupby(['time_spent']).size().max()
+pip install streamlit altair
+
+import streamlit as st
+import pandas as pd
+import altair as alt
+
+# โหลดข้อมูล
+df = pd.read_csv("./data/dummy_data.csv")
+
+# สร้างกราฟแท่ง
+chart = alt.Chart(df).mark_bar().encode(
+    x=alt.X('time_spent', title='Time Spent'),
+    y=alt.Y('count()', title='Count'),  
+    color='platform:N',
+    tooltip=['time_spent', 'platform']
+).properties(
+    width=600,
+    height=400,
+    title='Time Spent Distribution by Platform'
+)
+
+# แสดงกราฟใน Streamlit
+st.altair_chart(chart, use_container_width=True)
+
+streamlit run app.py
 
 
 

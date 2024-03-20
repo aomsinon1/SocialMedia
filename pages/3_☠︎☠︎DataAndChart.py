@@ -108,6 +108,7 @@ pie_chart_female = alt.Chart(max_time_spent_by_platform_female).mark_arc().encod
 
 # แสดง Pie Chart ใน Streamlit
 st.altair_chart(pie_chart_male | pie_chart_female, use_container_width=True)
+)
 
 
 

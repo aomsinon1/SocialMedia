@@ -36,7 +36,7 @@ chart = alt.Chart(filtered_df).mark_bar().encode(
 st.altair_chart(chart, use_container_width=True)
 
 
-max_value = filtered_df.groupby(['time_spent', 'platform']).size().max()
+max_value = filtered_df.groupby(['time_spent']).size().max()
 
 
 

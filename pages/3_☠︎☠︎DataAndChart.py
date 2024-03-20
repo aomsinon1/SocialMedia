@@ -23,7 +23,8 @@ st.header("Bar Chart")
 min_age = df["age"].min()
 max_age = df["age"].max()
 default_age_range = (min_age, max_age)
-age_range = st.slider("Select age range", min_value=min_age, max_value=max_age, value=default_age_range)
+selected_age_range = st.slider("Select age range", min_value=min_age, max_value=max_age, value=default_age_range)
+
 
 # ตรวจสอบว่าช่องสไลเดอร์ได้รับค่าที่ถูกต้องหรือไม่
 if age_range[0] is not None and age_range[1] is not None:

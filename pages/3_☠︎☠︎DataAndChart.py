@@ -70,7 +70,34 @@ bar_chart = alt.Chart(max_age_by_platform).mark_bar().encode(
 st.altair_chart(bar_chart, use_container_width=True)
 
 
+max_time_spent_by_platform = df.groupby('platform')['time_spent'].max().reset_index()
 
+# สร้าง Pie Chart
+pie_chart = alt.Chart(max_time_spent_by_platform).mark_arc().encode(
+    color='platform:N',
+    tooltip=['platform', 'time_spent']
+).transform_aggregate(
+    time_spent_max='max(time_spent)',
+    groupby=['platform']
+).transform_window(
+    rank='rank(time_spent_max)',
+    sort=[alt.SortField('time_spent_max', order='descending')]
+).transform_filter(
+    alt.datum.rank == 1
+).encode(
+    tooltip=['platform', 'time_spent_max']
+).properties(
+    width=600,
+    height=400,
+    title='Max Time Spent by Platform'
+).configure_title(
+    fontSize=20,
+    fontWeight='bold',
+    color='gray'
+)
+
+# แสดง Pie Chart ใน Streamlit
+st.altair_chart(pie_chart, use_container_width=True)
 
 
 

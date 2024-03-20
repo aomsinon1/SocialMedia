@@ -16,7 +16,20 @@ filtered_df = df[(df["age"] >= age_range[0]) & (df["age"] <= age_range[1])]
 st.bar_chart(filtered_df.set_index('platform')['age'])
 
 
+import altair as alt
 
+# สร้างกราฟแท่งโดยกำหนดแกน y เป็นอายุ
+chart = alt.Chart(filtered_df).mark_bar(color='#3182bd').encode(
+    x='platform',
+    y='age',
+    tooltip=['platform', 'age']
+).properties(
+    width=600,
+    height=400,
+    title='Age Distribution by Platform'
+)
+
+st.altair_chart(chart, use_container_width=True)
 
 
 

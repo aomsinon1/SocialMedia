@@ -10,3 +10,7 @@ st.header("Show Chart")
 
 st.line_chart(
    df, x="platform", y=["age"], color=["#FF0000"]  )
+
+st.header("Bar Chart")
+
+st.bar_chart(df.set_index('platform')['age'])

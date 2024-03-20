@@ -39,21 +39,22 @@ st.altair_chart(chart, use_container_width=True)
 
 import altair as alt
 
-# นับจำนวนข้อมูลในแต่ละแพลตฟอร์ม
-platform_count = filtered_df['platform'].value_counts().reset_index()
-platform_count.columns = ['male', 'platform']
+# นับจำนวนข้อมูลในแต่ละช่วงเวลาที่ใช้ในการใช้งานแอป
+time_spent_count = filtered_df['time_spent'].value_counts().reset_index()
+time_spent_count.columns = ['time_spent', 'count']
 
 # สร้าง Pie Chart
-pie_chart = alt.Chart(platform_count).mark_arc().encode(
-    color='platform:N',
-    tooltip=['male', 'platform']
+pie_chart = alt.Chart(time_spent_count).mark_arc().encode(
+    color='time_spent:N',
+    tooltip=['time_spent', 'count']
 ).properties(
     width=600,
     height=400,
-    title='Platform Distribution by Male'
+    title='Time Spent Distribution'
 )
 
 st.altair_chart(pie_chart, use_container_width=True)
+
 
 
 

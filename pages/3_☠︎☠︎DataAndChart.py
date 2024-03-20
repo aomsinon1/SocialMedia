@@ -52,18 +52,18 @@ chart = alt.Chart(df).mark_bar().encode(
 st.altair_chart(chart, use_container_width=True)
 
 
-max_time_spent_by_platform = df.groupby('platform')['time_spent'].max().reset_index()
+max_age_by_platform = df.groupby('platform')['age'].max().reset_index()
 
 # สร้างกราฟแท่ง
-bar_chart = alt.Chart(max_time_spent_by_platform).mark_bar().encode(
+bar_chart = alt.Chart(max_age_by_platform).mark_bar().encode(
     x=alt.X('platform:N', title='Platform'),
-    y=alt.Y('time_spent:Q', title='Max Time Spent (hours)'),
+    y=alt.Y('age:Q', title='Max Age'),
     color=alt.Color('platform:N', legend=None),
-    tooltip=['platform', 'time_spent']
+    tooltip=['platform', 'age']
 ).properties(
     width=600,
     height=400,
-    title='Max Time Spent by Platform'
+    title='Max Age by Platform'
 )
 
 # แสดงกราฟใน Streamlit

@@ -40,6 +40,32 @@ chart = alt.Chart(filtered_df).mark_bar(color='#3182bd').encode(
 st.altair_chart(chart, use_container_width=True)
 
 
+import altair as alt
+
+# สร้างกราฟวงกลม
+chart = alt.Chart(filtered_df).mark_circle(size=500).encode(
+    x=alt.X('platform', title='Platform'),
+    y=alt.Y('male', title='Male'),
+    color='platform:N',
+    tooltip=['platform', 'age']
+).properties(
+    width=600,
+    height=400,
+    title='Age Distribution by Platform'
+).configure_title(
+    fontSize=20,
+    fontWeight='bold',
+    color='gray'
+).configure_axis(
+    labelFontSize=12,
+    titleFontSize=16,
+    titleFontWeight='normal'
+)
+
+st.altair_chart(chart, use_container_width=True)
+
+
+
 
 
 

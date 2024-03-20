@@ -40,8 +40,8 @@ import altair as alt
 
 # สร้าง Pie Chart
 pie_chart = alt.Chart(filtered_df).mark_arc().encode(
-    alt.X('platform:N', title='Platform'),
-    alt.Y('sum(time_spent):Q', title='Time Spent (seconds)')
+    alt.Color('platform:N', title='Platform'),
+    alt.Size('sum(time_spent):Q', title='Time Spent (seconds)')
 ).properties(
     width=600,
     height=400,
@@ -57,6 +57,7 @@ pie_chart = alt.Chart(filtered_df).mark_arc().encode(
 )
 
 st.altair_chart(pie_chart, use_container_width=True)
+
 
 
 

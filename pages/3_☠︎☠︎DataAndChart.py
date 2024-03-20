@@ -52,3 +52,4 @@ max_value = filtered_df.groupby(['gender', 'time_spent', 'platform']).size().max
 
 
 
+

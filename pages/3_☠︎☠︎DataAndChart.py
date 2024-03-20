@@ -59,7 +59,6 @@ chart = alt.Chart(df).mark_bar().encode(
 # แสดงกราฟใน Streamlit
 st.altair_chart(chart, use_container_width=True)
 
-streamlit run app.py
 
 
 

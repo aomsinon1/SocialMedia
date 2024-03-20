@@ -45,13 +45,13 @@ import altair as alt
 # สร้างกราฟวงกลม
 chart = alt.Chart(filtered_df).mark_circle(size=500).encode(
     x=alt.X('age', title='Age'),
-    y=alt.Y('time_spent', title='Time_spent'),
+    y=alt.Y('time_spent', title='Time Spent'),
     color='platform:N',
-    tooltip=['platform', 'male']
+    tooltip=['platform', 'age']  # แก้ไขเป็นชื่อฟิลด์ที่ต้องการแสดงใน tooltip
 ).properties(
     width=600,
     height=400,
-    title='age Distribution by Platform'
+    title='Age Distribution by Platform'
 ).configure_title(
     fontSize=20,
     fontWeight='bold',
@@ -63,7 +63,6 @@ chart = alt.Chart(filtered_df).mark_circle(size=500).encode(
 )
 
 st.altair_chart(chart, use_container_width=True)
-
 
 
 

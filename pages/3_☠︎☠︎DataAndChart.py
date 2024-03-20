@@ -17,25 +17,7 @@ filtered_df = df[(df["age"] >= age_range[0]) & (df["age"] <= age_range[1])]
 st.bar_chart(filtered_df.set_index('platform')['age'])
 
 
-st.header("Bar Chart")
 
-# สร้างช่องสไลเดอร์สำหรับการเลือกช่วงอายุ
-min_age = df["age"].min()
-max_age = df["age"].max()
-default_age_range = (min_age, max_age)
-selected_age_range = st.slider("Select age range", min_value=min_age, max_value=max_age, value=default_age_range)
-
-# ตรวจสอบว่าช่องสไลเดอร์ได้รับค่าที่ถูกต้องหรือไม่
-if selected_age_range[0] is not None and selected_age_range[1] is not None:
-    if isinstance(selected_age_range[0], (int, float)) and isinstance(selected_age_range[1], (int, float)):
-        # แปลงค่าที่ได้จากช่องสไลเดอร์เป็น int
-        age_range = (int(selected_age_range[0]), int(selected_age_range[1]))
-    else:
-        # หากไม่เป็นตัวเลขที่สามารถแปลงเป็น int ได้ให้ใช้ค่าเริ่มต้นของช่วงอายุ
-        age_range = (min_age, max_age)
-else:
-    # หากไม่มีการเลือกช่วงอายุให้ใช้ค่าเริ่มต้นของช่วงอายุ
-    age_range = (min_age, max_age)
 
 
 

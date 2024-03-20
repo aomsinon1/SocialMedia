@@ -52,8 +52,7 @@ pie_chart = alt.Chart(platform_count).mark_arc().encode(
     height=400,
     title='Platform Distribution'
 )
+
 st.altair_chart(pie_chart, use_container_width=True)
-
-
 
 

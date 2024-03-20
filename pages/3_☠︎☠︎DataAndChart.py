@@ -35,7 +35,21 @@ chart = alt.Chart(filtered_df).mark_bar().encode(
 
 st.altair_chart(chart, use_container_width=True)
 
+pie_chart = alt.Chart(platform_count).mark_arc().encode(
+    theta='male:Q',
+    color='platform:N',
+    tooltip=['platform', 'male']
+).properties(
+    width=400,
+    height=400,
+    title='Platform Distribution'
+).configure_title(
+    fontSize=20,
+    fontWeight='bold',
+    color='gray'
+)
 
+st.altair_chart(pie_chart, use_container_width=True)
 
 
 

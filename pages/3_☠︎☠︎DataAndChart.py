@@ -9,5 +9,5 @@ st.write(df.head(10))
 st.header("Show Chart")
 
 st.line_chart(
-   df, x="platform", "interests", y=["age" ], color=["#FF0000", "#0000FF"]  # Optional
+   df, x="platform","interests", y=["age" ], color=["#FF0000", "#0000FF"]  # Optional
 )

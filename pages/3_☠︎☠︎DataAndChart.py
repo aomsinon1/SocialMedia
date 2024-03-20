@@ -41,11 +41,11 @@ import altair as alt
 # สร้าง Pie Chart
 pie_chart = alt.Chart(filtered_df).mark_arc().encode(
     alt.Color('platform:N', title='Platform'),
-    alt.Size('sum(male):Q', title='Male')
+    alt.Size('count():Q', title='Count')
 ).properties(
     width=600,
     height=400,
-    title='Male Distribution by Platform'
+    title='Distribution by Platform and Time Spent'
 ).configure_title(
     fontSize=20,
     fontWeight='bold',
@@ -57,6 +57,7 @@ pie_chart = alt.Chart(filtered_df).mark_arc().encode(
 )
 
 st.altair_chart(pie_chart, use_container_width=True)
+
 
 
 

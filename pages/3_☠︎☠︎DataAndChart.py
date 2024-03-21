@@ -82,5 +82,26 @@ dtSexb = pd.DataFrame(dtSex, index=["ชาย", "หญิง"])
 # Plot a bar chart using Streamlit
 st.bar_chart(dtSexb)
 
+import streamlit as st
+import pandas as pd
+
+# Assuming dt is your DataFrame containing data
+
+# Filter data by 'Sex'
+NumM = dt[dt['gender'] == 'ชาย'].count()
+NumF = dt[dt['gender'] == 'หญิง'].count()
+
+# Display counts using subheaders
+st.subheader('ชาย')
+st.subheader(NumM.iloc[0])
+st.subheader('หญิง')
+st.subheader(NumF.iloc[0])
+
+# Create a DataFrame for plotting
+dtSex = [NumM.iloc[0], NumF.iloc[0]]
+dtSexb = pd.DataFrame(dtSex, index=["ชาย", "หญิง"])
+
+# Plot a bar chart using Streamlit
+st.bar_chart(dtSexb)
 
 

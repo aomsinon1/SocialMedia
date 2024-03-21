@@ -5,7 +5,7 @@ import streamlit as st
 from streamlit_lottie import st_lottie
 from streamlit_lottie import st_lottie_spinner
 
-uploaded_file = st.file_uploader("อัปโหลดไฟล์ GIF", type="gif")
+
 
 # ถ้ามีการอัปโหลดไฟล์ GIF
 if uploaded_file is not None:

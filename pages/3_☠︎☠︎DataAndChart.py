@@ -35,8 +35,6 @@ chart = alt.Chart(filtered_df).mark_bar().encode(
 
 st.altair_chart(chart, use_container_width=True)
 
-
-
 chart = alt.Chart(df).mark_bar().encode(
     x=alt.X('platform:N', title='Platform'),
     y=alt.Y('time_spent', title='Time Spent'),  
@@ -48,13 +46,11 @@ chart = alt.Chart(df).mark_bar().encode(
     title='Time Spent Distribution by Platform'
 )
 
-# แสดงกราฟใน Streamlit
 st.altair_chart(chart, use_container_width=True)
-
 
 max_age_by_platform = df.groupby('platform')['age'].max().reset_index()
 
-# สร้างกราฟแท่ง
+# Create bar chart using Altair
 bar_chart = alt.Chart(max_age_by_platform).mark_bar().encode(
     x=alt.X('platform:N', title='Platform'),
     y=alt.Y('age:Q', title='Max Age'),
@@ -66,50 +62,11 @@ bar_chart = alt.Chart(max_age_by_platform).mark_bar().encode(
     title='Max Age by Platform'
 )
 
-# แสดงกราฟใน Streamlit
 st.altair_chart(bar_chart, use_container_width=True)
 
-
-# สร้าง Pie Chart สำหรับผู้ชาย
-pie_chart_male = alt.Chart(max_time_spent_by_platform_male).mark_arc().encode(
-    color='platform:N',
-    tooltip=['platform', 'time_spent']
-).properties(
-    width=300,
-    height=300,
-    title='Favorite Platform of Males'
-).configure_title(
-    fontSize=20,
-    fontWeight='bold',
-    color='gray'
-)
-
-# สร้าง Pie Chart สำหรับผู้หญิง
-pie_chart_female = alt.Chart(max_time_spent_by_platform_female).mark_arc().encode(
-    color='platform:N',
-    tooltip=['platform', 'time_spent']
-).properties(
-    width=300,
-    height=300,
-    title='Favorite Platform of Females'
-).configure_title(
-    fontSize=20,
-    fontWeight='bold',
-    color='gray'
-)
-
-# แสดง Pie Chart ใน Streamlit
-st.altair_chart((pie_chart_male & pie_chart_female), use_container_width=True)
-
-
-import streamlit as st
-import pandas as pd
-
-# Assuming dt is your DataFrame containing data
-
-# Filter data by 'Sex'
-NumM = dt[dt['gender'] == 'ชาย'].count()
-NumF = dt[dt['gender'] == 'หญิง'].count()
+# Filter data by gender
+NumM = df[df['gender'] == 'ชาย'].count()
+NumF = df[df['gender'] == 'หญิง'].count()
 
 # Display counts using subheaders
 st.subheader('ชาย')
@@ -127,18 +84,3 @@ st.bar_chart(dtSexb)
 # Plot a pie chart using Streamlit
 st.subheader("Pie Chart")
 st.write(dtSexb.plot.pie(y=0, autopct='%1.1f%%'))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -102,15 +102,32 @@ pie_chart_female = alt.Chart(max_time_spent_by_platform_female).mark_arc().encod
 st.altair_chart((pie_chart_male & pie_chart_female), use_container_width=True)
 
 
-import matplotlib.pyplot as plt
-labels = 'Males', 'gray'
-sizes = [NumM[1],NumF[1]]
-explode = (0, 0.1)  # only "explode" the 2nd slice (i.e. 'Hogs')
+import streamlit as st
+import pandas as pd
 
-fig1, ax1 = plt.subplots()
-ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
-        shadow=True, startangle=90)
-st.pyplot(fig1)
+# Assuming dt is your DataFrame containing data
+
+# Filter data by 'Sex'
+NumM = dt[dt['Sex'] == 'ชาย'].count()
+NumF = dt[dt['Sex'] == 'หญิง'].count()
+
+# Display counts using subheaders
+st.subheader('ชาย')
+st.subheader(NumM[1])
+st.subheader('หญิง')
+st.subheader(NumF[1])
+
+# Create a DataFrame for plotting
+dtSex = [NumM[1], NumF[1]]
+dtSexb = pd.DataFrame(dtSex, index=["ชาย", "หญิง"])
+
+# Plot a bar chart using Streamlit
+st.bar_chart(dtSexb)
+
+# Plot a pie chart using Streamlit
+st.subheader("Pie Chart")
+st.write(dtSexb.plot.pie(y=0, autopct='%1.1f%%'))
+
 
 
 

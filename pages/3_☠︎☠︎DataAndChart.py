@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
-import matplotlib.pyplot as plt
 
 st.header("Show Data Index Price")
 
@@ -82,31 +81,24 @@ dtSexb = pd.DataFrame(dtSex, index=["ชาย", "หญิง"])
 # Plot a bar chart using Streamlit
 st.bar_chart(dtSexb)
 
-# Assuming df is your DataFrame containing platform information
 import streamlit as st
 import pandas as pd
-import altair as alt
+import matplotlib.pyplot as plt
 
 # Assuming df is your DataFrame containing platform information
 platform_counts = df.groupby('platform').size()
 
-# Plot a pie chart using Altair
-pie_chart = alt.Chart(pd.DataFrame(platform_counts, columns=['Count'])).mark_circle(size=500).encode(
-    x=alt.value(0),
-    y=alt.value(0),
-    color=alt.Color('platform:N', legend=None),
-    size=alt.Size('Count:Q', legend=None),
-    tooltip=['platform', 'Count']
-).properties(
-    width=600,
-    height=400,
-    title='Platform Distribution'
-).configure_title(
-    fontSize=20,
-    fontWeight='bold',
-    color='gray'
-)
+# Display counts using subheaders
+st.subheader('Facebook')
+st.subheader(platform_counts.get('Facebook', 0))
+st.subheader('Instagram')
+st.subheader(platform_counts.get('Instagram', 0))
+st.subheader('YouTube')
+st.subheader(platform_counts.get('YouTube', 0))
 
-# Display the pie chart in Streamlit
-st.altair_chart(pie_chart, use_container_width=True)
+# Plot a pie chart using Matplotlib
+plt.figure(figsize=(8, 6))
+plt.pie(platform_counts, labels=platform_counts.index, autopct='%1.1f%%', startangle=140)
+plt.title('Platform Distribution')
+st.pyplot()
 

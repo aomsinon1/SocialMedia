@@ -111,3 +111,15 @@ st.subheader("Pie Chart")
 fig, ax = plt.subplots()
 ax.pie(dtSexb[0], labels=dtSexb.index, autopct='%1.1f%%')
 st.pyplot(fig)
+
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Assuming dtSexb is your DataFrame containing gender data
+
+# Plot a pie chart using Matplotlib
+st.subheader("Pie Chart")
+fig, ax = plt.subplots()
+ax.pie(dtSexb[0], labels=dtSexb.index, autopct='%1.1f%%')
+st.pyplot(fig)

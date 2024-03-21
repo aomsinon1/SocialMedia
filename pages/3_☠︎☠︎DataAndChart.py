@@ -81,23 +81,6 @@ dtSexb = pd.DataFrame(dtSex, index=["ชาย", "หญิง"])
 # Plot a bar chart using Streamlit
 st.bar_chart(dtSexb)
 
-# Count the number of data points for each platform
-platform_counts = df.groupby('platform').size()
-
-# Display counts using subheaders
-st.subheader('Facebook')
-st.subheader(platform_counts.get('Facebook', 0))
-st.subheader('Instagram')
-st.subheader(platform_counts.get('Instagram', 0))
-st.subheader('YouTube')
-st.subheader(platform_counts.get('YouTube', 0))
-
-# Create a DataFrame for plotting
-dtSexb = pd.DataFrame(platform_counts, columns=['Count'])
-
-# Plot a bar chart using Streamlit
-st.bar_chart(dtSexb)
-
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt

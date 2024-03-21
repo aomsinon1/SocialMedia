@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import altair as alt
+import matplotlib.pyplot as plt
 
 st.header("Show Data Index Price")
 
@@ -81,10 +82,6 @@ dtSexb = pd.DataFrame(dtSex, index=["ชาย", "หญิง"])
 # Plot a bar chart using Streamlit
 st.bar_chart(dtSexb)
 
-import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-
 # Assuming df is your DataFrame containing platform information
 platform_counts = df.groupby('platform').size()
 
@@ -101,4 +98,3 @@ plt.figure(figsize=(8, 6))
 plt.pie(platform_counts, labels=platform_counts.index, autopct='%1.1f%%', startangle=140)
 plt.title('Platform Distribution')
 st.pyplot()
-

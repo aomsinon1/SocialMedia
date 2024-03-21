@@ -68,22 +68,6 @@ st.altair_chart(bar_chart, use_container_width=True)
 NumM = df[df['gender'] == 'ชาย'].count()
 NumF = df[df['gender'] == 'หญิง'].count()
 
-# Display counts using subheaders
-st.subheader('ชาย')
-st.subheader(NumM[1])
-st.subheader('หญิง')
-st.subheader(NumF[1])
-
-# Create a DataFrame for plotting
-dtSex = [NumM[1], NumF[1]]
-dtSexb = pd.DataFrame(dtSex, index=["ชาย", "หญิง"])
-
-# Plot a bar chart using Streamlit
-st.bar_chart(dtSexb)
-
-# Plot a pie chart using Streamlit
-st.subheader("Pie Chart")
-st.write(dtSexb.plot.pie(y=0, autopct='%1.1f%%'))
 
 
 

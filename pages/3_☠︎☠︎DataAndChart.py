@@ -97,3 +97,25 @@ dtSexb = pd.DataFrame(platform_counts, columns=['Count'])
 
 # Plot a bar chart using Streamlit
 st.bar_chart(dtSexb)
+
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Assuming df is your DataFrame containing platform information
+platform_counts = df.groupby('platform').size()
+
+# Display counts using subheaders
+st.subheader('Facebook')
+st.subheader(platform_counts.get('Facebook', 0))
+st.subheader('Instagram')
+st.subheader(platform_counts.get('Instagram', 0))
+st.subheader('YouTube')
+st.subheader(platform_counts.get('YouTube', 0))
+
+# Plot a pie chart using Matplotlib
+plt.figure(figsize=(8, 6))
+plt.pie(platform_counts, labels=platform_counts.index, autopct='%1.1f%%', startangle=140)
+plt.title('Platform Distribution')
+st.pyplot()
+

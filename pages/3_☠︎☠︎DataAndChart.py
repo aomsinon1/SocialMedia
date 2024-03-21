@@ -64,29 +64,9 @@ bar_chart = alt.Chart(max_age_by_platform).mark_bar().encode(
 
 st.altair_chart(bar_chart, use_container_width=True)
 
-import streamlit as st
-import pandas as pd
-
-# Assuming dt is your DataFrame containing data
-import streamlit as st
-import pandas as pd
-
-# Assuming dt is your DataFrame containing data
-
-# Filter data by 'gender' (assuming dt is your DataFrame containing gender information)
-NumM = dt[dt['gender'] == 'ชาย'].count()
-NumF = dt[dt['gender'] == 'หญิง'].count()
-
-# Display counts using subheaders
-st.subheader('ชาย')
-st.subheader(NumM.iloc[0])
-st.subheader('หญิง')
-st.subheader(NumF.iloc[0])
-
-
-# Filter data by 'Sex'
-NumM = dt[dt['gender'] == 'ชาย'].count()
-NumF = dt[dt['gender'] == 'หญิง'].count()
+# Assuming dt is your DataFrame containing gender information
+NumM = df[df['gender'] == 'ชาย'].count()
+NumF = df[df['gender'] == 'หญิง'].count()
 
 # Display counts using subheaders
 st.subheader('ชาย')
@@ -100,5 +80,3 @@ dtSexb = pd.DataFrame(dtSex, index=["ชาย", "หญิง"])
 
 # Plot a bar chart using Streamlit
 st.bar_chart(dtSexb)
-
-

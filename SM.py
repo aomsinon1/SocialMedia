@@ -11,7 +11,7 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
-lottie_url_hello = "https://tenor.com/th/view/amad-diallo-traore-amad-diallo-traore-gif-20723512"
+lottie_url_hello = "https://lottie.host/e1e288b5-1a12-470f-9f29-45e1171dc7e8/Way5aKuCFU.json"
 lottie_hello = load_lottieurl(lottie_url_hello)
 
 st.header("การพยากรณ์ข้อมูลการใช้platformด้วยเทคนิค Linear Regression☠︎")

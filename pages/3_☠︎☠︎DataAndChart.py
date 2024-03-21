@@ -108,8 +108,8 @@ import pandas as pd
 # Assuming dt is your DataFrame containing data
 
 # Filter data by 'Sex'
-NumM = dt[dt['Sex'] == 'ชาย'].count()
-NumF = dt[dt['Sex'] == 'หญิง'].count()
+NumM = dt[dt['gender'] == 'ชาย'].count()
+NumF = dt[dt['gender'] == 'หญิง'].count()
 
 # Display counts using subheaders
 st.subheader('ชาย')

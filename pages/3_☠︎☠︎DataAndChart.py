@@ -102,7 +102,15 @@ pie_chart_female = alt.Chart(max_time_spent_by_platform_female).mark_arc().encod
 st.altair_chart((pie_chart_male & pie_chart_female), use_container_width=True)
 
 
+import matplotlib.pyplot as plt
+labels = 'Males', 'gray'
+sizes = [NumM[1],NumF[1]]
+explode = (0, 0.1)  # only "explode" the 2nd slice (i.e. 'Hogs')
 
+fig1, ax1 = plt.subplots()
+ax1.pie(sizes, explode=explode, labels=labels, autopct='%1.1f%%',
+        shadow=True, startangle=90)
+st.pyplot(fig1)
 
 
 

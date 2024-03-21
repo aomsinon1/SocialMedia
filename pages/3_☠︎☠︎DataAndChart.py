@@ -65,8 +65,8 @@ bar_chart = alt.Chart(max_age_by_platform).mark_bar().encode(
 st.altair_chart(bar_chart, use_container_width=True)
 
 # Assuming dt is your DataFrame containing gender information
-NumM = df[df['gender'] == 'ชาย'].count()
-NumF = df[df['gender'] == 'หญิง'].count()
+NumM = df[df['gender'] == 'male'].count()
+NumF = df[df['gender'] == 'female'].count()
 
 # Display counts using subheaders
 st.subheader('ชาย')

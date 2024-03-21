@@ -64,24 +64,6 @@ bar_chart = alt.Chart(max_age_by_platform).mark_bar().encode(
 
 st.altair_chart(bar_chart, use_container_width=True)
 
-# Filter data by gender
-# Filter data by gender and count the occurrences
-gender_counts = df['gender'].value_counts()
-
-# Display counts using subheaders
-st.subheader('ชาย')
-st.subheader(gender_counts.get('ชาย', 0))  # ใช้ .get() เพื่อรับค่าจำนวนของ 'ชาย' และกำหนดให้เป็น 0 ถ้าไม่พบค่านี้
-st.subheader('หญิง')
-st.subheader(gender_counts.get('หญิง', 0))  # ใช้ .get() เพื่อรับค่าจำนวนของ 'หญิง' และกำหนดให้เป็น 0 ถ้าไม่พบค่านี้
-
-
-# Create a DataFrame for plotting
-dtSex = [NumM[1], NumF[1]]
-dtSexb = pd.DataFrame(dtSex, index=["ชาย", "หญิง"])
-
-# Plot a bar chart using Streamlit
-st.bar_chart(dtSexb)
-
 import streamlit as st
 import pandas as pd
 

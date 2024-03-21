@@ -11,10 +11,10 @@ def load_lottieurl(url: str):
         return None
     return r.json()
 
-lottie_url_hello = "https://lottie.host/84e2487d-bcce-48b3-a30d-4e700ff9869b/fBWUkubaDT.json"
+lottie_url_hello = "https://tenor.com/th/view/fun-pet-pet-fun-high-tired-so-tired-gif-24511981"
 lottie_hello = load_lottieurl(lottie_url_hello)
 
-st.header("การพยากรณ์ข้อมูล....ด้วยเทคนิค Linear Regression☠︎")
+st.header("การพยากรณ์ข้อมูลการใช้platformด้วยเทคนิค Linear Regression☠︎")
 st.header("by Aomsin")
 
 #การเรียกใช้งาาน lottie file

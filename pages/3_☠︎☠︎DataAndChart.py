@@ -85,41 +85,5 @@ st.bar_chart(dtSexb)
 st.subheader("Pie Chart")
 st.write(dtSexb.plot.pie(y=0, autopct='%1.1f%%'))
 
-#กราฟวงกลม
 
-import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
 
-st.header("Show Data Index Price")
-
-df = pd.read_csv("./data/dummy_data.csv")
-st.write(df.head(10))
-
-st.header("Show Chart")
-
-# Filtered data based on age_range
-age_range = st.slider("Select age range", min_value=df["age"].min(), max_value=df["age"].max(), value=(df["age"].min(), df["age"].max()))
-filtered_df = df[(df["age"] >= age_range[0]) & (df["age"] <= age_range[1])]
-
-# Create chart using Altair (example provided in the previous response)
-
-# Plot a bar chart using Streamlit and Altair (example provided in the previous response)
-
-# Plot a pie chart using Matplotlib
-st.subheader("Pie Chart")
-fig, ax = plt.subplots()
-ax.pie(dtSexb[0], labels=dtSexb.index, autopct='%1.1f%%')
-st.pyplot(fig)
-
-import streamlit as st
-import pandas as pd
-import matplotlib.pyplot as plt
-
-# Assuming dtSexb is your DataFrame containing gender data
-
-# Plot a pie chart using Matplotlib
-st.subheader("Pie Chart")
-fig, ax = plt.subplots()
-ax.pie(dtSexb[0], labels=dtSexb.index, autopct='%1.1f%%')
-st.pyplot(fig)
